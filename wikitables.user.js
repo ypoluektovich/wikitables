@@ -25,7 +25,7 @@ function getText(e) {
     sups = e.getElementsByTagName('sup');
   }
 
-  return e.textContent;
+  return e.textContent.trim();
 }
 
 const indexOfHeader = {};
