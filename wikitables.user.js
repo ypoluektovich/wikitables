@@ -36,13 +36,20 @@ const data = {};
 for (let table of document.getElementsByClassName('wikitable')) {
   const tableHeaderIndexes = [];
   for (let row of table.getElementsByTagName('tr')) {
-    const headers = row.getElementsByTagName('th');
-    if (headers.length > 1) {
+    const rowIsHeader = row.getElementsByTagName('th').length > 1;
+    const cells = [];
+    for (let cell of row.getElementsByTagName('th')) {
+      cells.push(cell);
+    }
+    for (let cell of row.getElementsByTagName('td')) {
+      cells.push(cell);
+    }
+    if (rowIsHeader) {
       if (tableHeaderIndexes.length > 0) {
         // todo: log?
         continue;
       }
-      for (let header of headers) {
+      for (let header of cells) {
         const text = getText(header);
 
         let index = indexOfHeader[text];
@@ -53,13 +60,11 @@ for (let table of document.getElementsByClassName('wikitable')) {
         tableHeaderIndexes.push(index);
       }
     } else {
-      const id = getText(headers[0]);
+      const id = getText(cells[0]);
       const dataObject = data[id] || (data[id] = {});
-      dataObject[tableHeaderIndexes[0]] = id;
       let ix = 0;
-      for (let cell of row.getElementsByTagName('td')) {
-        ++ix;
-        dataObject[tableHeaderIndexes[ix]] = getText(cell);
+      for (let cell of cells) {
+        dataObject[tableHeaderIndexes[ix++]] = getText(cell);
       }
     }
   }
