@@ -1,0 +1,23 @@
+X = OR
+
+SQuoted = "'" value:([^']*) "'" { return value.join(''); }
+DQuoted = '"' value:([^"]*) '"' { return value.join(''); }
+
+Term = SQuoted / DQuoted
+
+EQ = _ left:Term _ '=' _ right:Term { return valueOfRowField(left) === right; }
+
+AND
+  = a:BOOL _ 'and' _ b:BOOL { return a && b; }
+  / BOOL
+
+OR
+  = a:AND _ 'or' _ b:AND { return a || b; }
+  / AND
+
+BOOL
+  = EQ
+  / '(' x:BOOL ')' { return x; }
+
+_ "whitespace"
+  = [ \t\n\r]*

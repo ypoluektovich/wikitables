@@ -1,0 +1,11 @@
+{
+  "name": "wikitables",
+  "version": "1.0.0",
+  "devDependencies": {
+    "fs-extra": "^6.0.1",
+    "pegjs": "^0.10.0"
+  },
+  "scripts": {
+    "build": "node ./build.js"
+  }
+}
