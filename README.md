@@ -14,8 +14,10 @@ This userscript:
 The filter expressions are logical expressions over comparisons.
 
 Currently supporting:
-- equality operator: `'column name' = 'desired value'`
-- logical operators: `and`, `or`
+- case-insensitive equality operator: `'column name' = 'desired value'` (tries to take the locale from the Wikipedia domain name)
+- case-insensitive "not-equals" operator `!=`
+- their case-sensitive counterparts (`==` and `!==`)
+- logical operators: `not`, `and`, `or`
 - parentheses
 
 Stay tuned for more features! Or help me implement them!
