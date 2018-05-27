@@ -1,3 +1,9 @@
+{
+	let lang = window.location.hostname;
+	lang = lang.substring(0, lang.indexOf('.'));
+	function ciEquals(a, b) { return a.localeCompare(b, lang, {sensitivity:"base"}) === 0; }
+}
+
 X = _ x:EXPR _ { return x; }
 
 SQuoted = "'" value:([^']*) "'" { return value.join(''); }
@@ -5,10 +11,16 @@ DQuoted = '"' value:([^"]*) '"' { return value.join(''); }
 
 Term = SQuoted / DQuoted
 
-EQ = left:Term _ '=' _ right:Term { return valueOfRowField(left) === right; }
+EQ = left:Term _ '==' _ right:Term { return valueOfRowField(left) === right; }
+NEQ = left:Term _ '!==' _ right:Term { return valueOfRowField(left) !== right; }
+CIEQ = left:Term _ '=' _ right:Term { return ciEquals(valueOfRowField(left), right); }
+CINEQ = left:Term _ '!=' _ right:Term { return !ciEquals(valueOfRowField(left), right); }
 
 ATOM
   = EQ
+  / NEQ
+  / CIEQ
+  / CINEQ
   / '(' _ x:EXPR _ ')' { return x; }
 
 NOT
