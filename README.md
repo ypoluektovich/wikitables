@@ -20,6 +20,8 @@ Currently supporting:
 
 Stay tuned for more features! Or help me implement them!
 
+(Issue #1 is the tracking/roadmap issue for filter expressions features.)
+
 ## Building
 
 Sadly, you can't just take the `wikitables.user.js` file and plug it into your browser directly. First you'll need to build the userscript. Don't worry, that's pretty easy.
