@@ -1,9 +1,14 @@
 // ==UserScript==
 // @name Wikitables
+// @version 1.0.0
+// @description Collects all wiki tables on the page into one big table with filtering support.
+// @license ISC
 // @require https://cdn.jsdelivr.net/npm/vanilla-datatables@1.6.14/dist/vanilla-dataTables.min.js
 // @match https://*.wikipedia.org/wiki/*
 // @grant none
 // ==/UserScript==
+
+// Report issues and contribute patches at https://github.com/ypoluektovich/wikitables
 
 'use strict';
 
