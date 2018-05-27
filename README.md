@@ -1,4 +1,4 @@
-= Wikitables
+# Wikitables
 
 Have you ever looked at a big Wikipedia article of the "Comparison of ..." variety, seen its many huge tables, and despaired? Well, now your despair is about to be lessened somewhat.
 
@@ -9,7 +9,7 @@ This userscript:
 - and allows you to filter what columns you want to see
 - as well as write complex logical expressions to filter rows!
 
-== Filter expressions
+## Filter expressions
 
 The filter expressions are logical expressions over comparisons.
 
@@ -20,7 +20,7 @@ Currently supporting:
 
 Stay tuned for more features! Or help me implement them!
 
-== Building
+## Building
 
 Sadly, you can't just take the `wikitables.user.js` file and plug it into your browser directly. First you'll need to build the userscript. Don't worry, that's pretty easy.
 
@@ -30,10 +30,10 @@ Sadly, you can't just take the `wikitables.user.js` file and plug it into your b
 
 There should now be a `dest` directory with your new userscript!
 
-== Pull requests welcome!
+## Pull requests welcome!
 
 ^ this.
 
-== License
+## License
 
 ISC.
