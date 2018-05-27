@@ -106,7 +106,8 @@ function dtOptions(headers, data) {
     },
     perPage: 50,
     perPageSelect: [10, 20, 50, 100, 200],
-    searchable: false
+    searchable: false,
+    sortable: true
   };
 }
 
