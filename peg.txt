@@ -1,23 +1,28 @@
-X = OR
+X = _ x:EXPR _ { return x; }
 
 SQuoted = "'" value:([^']*) "'" { return value.join(''); }
 DQuoted = '"' value:([^"]*) '"' { return value.join(''); }
 
 Term = SQuoted / DQuoted
 
-EQ = _ left:Term _ '=' _ right:Term { return valueOfRowField(left) === right; }
+EQ = left:Term _ '=' _ right:Term { return valueOfRowField(left) === right; }
+
+ATOM
+  = EQ
+  / '(' _ x:EXPR _ ')' { return x; }
+
+NOT
+  = 'not' _ x:ATOM { return !x; }
+  / ATOM
 
 AND
-  = a:BOOL _ 'and' _ b:BOOL { return a && b; }
-  / BOOL
+  = head:NOT tail:(_ 'and' _ NOT)* { return tail.reduce((acc, el) => { return acc && el[3]; }, head); }
 
 OR
-  = a:AND _ 'or' _ b:AND { return a || b; }
-  / AND
+  = head:AND tail:(_ 'or' _ AND)* { return tail.reduce((acc, el) => { return acc || el[3]; }, head); }
 
-BOOL
-  = EQ
-  / '(' x:BOOL ')' { return x; }
+EXPR
+  = OR
 
 _ "whitespace"
   = [ \t\n\r]*
