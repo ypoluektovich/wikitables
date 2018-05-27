@@ -20,7 +20,7 @@ Currently supporting:
 
 Stay tuned for more features! Or help me implement them!
 
-(Issue #1 is the tracking/roadmap issue for filter expressions features.)
+([Issue #1](https://github.com/ypoluektovich/wikitables/issues/1) is the tracking/roadmap issue for filter expressions features.)
 
 ## Building
 
